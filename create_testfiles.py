@@ -4,12 +4,12 @@ from datetime import datetime, timedelta
 def surnames():
     return ["Smittoniaya", "Johnsonessuh", "Williamzz", "Joneysah", "Brownows",
             "McQuirklebee", "VonWobbleton", "Fizzlebottom", "Snickerdoodle", "Bumblethorpe",
-            "Twistlepuff", "Crankleford", "Zigglewitz", "Fluffernutter", "Wobblewitz",
+            "Twistlepuff", "Crankleford", "Zigglewitz",
             "Kern", "van , Peter", "Leia", "Atreides", "X"]
 
 def first_names():
     return ["Columbo", "Mickey", "Butlerella", "Godfather", "Avrana", "Hobbit", "Fish",
-            "Wanda", 'Pjotr , not "Iljitsj"', "Casper", "Mefisto", "Bonnie", "Godmother", "Arthur",
+            "Wanda", 'Pjotr , not "Iljitsj"', "Casper", "Mefisto", "Arthur",
             "Harold", "Fellow", "Wally", "Pubby"]
 
 def full_names():
