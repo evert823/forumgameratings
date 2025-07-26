@@ -1,0 +1,2 @@
+- Python support for maintaining ratings
+- see https://www.chess.com/forum/view/chess-variants/python-support-for-maintaining-forum-game-ratings

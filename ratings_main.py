@@ -6,6 +6,7 @@ def loadconfig():
     global config
     file1 = open('./config/config.json', 'r', encoding='utf-8')
     config = json.load(file1)
+    file1.close()
 
 gamelist_df = pd.read_csv('./inputdata/gamelist_01.csv')
 rating_impact_table_df = pd.read_csv('./inputdata/rating_impact_table.csv')
