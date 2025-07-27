@@ -2,6 +2,18 @@ import pandas as pd
 from datetime import datetime
 
 class RatingList:
+    """
+    This class uses
+    - an initial ratinglist
+    - a list of game results
+    in order to calculate
+    - the updated ratinglist
+    This calculation is done in method execute_rating_cycle
+
+    Other input:
+    - csv with rating impact table
+    - config file with rating floor
+    """
     def __init__(self):
         self.myratings: list[tuple[str, int]] = []
         self.mynextgames: list[tuple[datetime, str, str, str]] = []
@@ -29,7 +41,7 @@ class RatingList:
             self.mynextgames.append((mydatetime, white_player, black_player, myresult))
         self._sort_mynextgames()
 
-    def add_new_players(self):
+    def _add_new_players(self):
         for gm in self.mynextgames:
             self._add_players_from_game(gm)
         #self._deduplicate_players()
@@ -102,7 +114,7 @@ class RatingList:
             return '0.5-0.5'
         return None
 
-    def rating_diff_logic(self, rating_impact_row, game_result,
+    def _rating_diff_logic(self, rating_impact_row, game_result,
                           old_rating_white, min_rating_white,
                           old_rating_black, min_rating_black):
         myresult = self._clean_result(game_result)
@@ -156,7 +168,7 @@ class RatingList:
         min_rating_black = (old_rating_black + self.rating_floor) // 2
         rating_difference = abs(old_rating_white - old_rating_black)
         rating_impact_row = self._get_rating_impact_record(rating_impact_table_df, rating_difference)
-        new_rating_white, new_rating_black = self.rating_diff_logic(rating_impact_row=rating_impact_row,
+        new_rating_white, new_rating_black = self._rating_diff_logic(rating_impact_row=rating_impact_row,
                                 game_result=game[3],
                                 old_rating_white=old_rating_white, min_rating_white=min_rating_white,
                                 old_rating_black=old_rating_black, min_rating_black=min_rating_black)
@@ -165,6 +177,7 @@ class RatingList:
         #print(f"{game[0]},{old_rating_white},{old_rating_black},{game[3]},{new_rating_white},{new_rating_black}")
 
     def execute_rating_cycle(self, rating_impact_table_df:pd.DataFrame):
+        self._add_new_players()
         for i in range(len(self.mynextgames)):
             self._process_game_in_ratings(self.mynextgames[i], rating_impact_table_df)
 

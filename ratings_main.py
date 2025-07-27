@@ -23,9 +23,6 @@ myRatingList.show_list(myRatingList.myratings)
 myRatingList.load_next_gamelist_from_df(gamelist_df, 'Date of game', '%Y-%m-%d', 'White player', 'Black player', 'Game result')
 myRatingList.show_list(myRatingList.mynextgames)
 
-myRatingList.add_new_players()
-#myRatingList.show_list(myRatingList.myratings)
-
 myRatingList.execute_rating_cycle(rating_impact_table_df=rating_impact_table_df)
 
 myupdatedratings_df = pd.DataFrame(myRatingList.myratings, columns=['Full name of player', 'Rating'])
