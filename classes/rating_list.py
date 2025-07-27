@@ -73,7 +73,7 @@ class RatingList:
         for i in range(len(self.myratings)):
             if self.myratings[i][0] == playername:
                 return i
-        return -1
+        raise Exception(f"Mismatch in _get_myratings_i")
     
     def _get_rating_impact_record(self, rating_impact_table_df:pd.DataFrame,
                                   rating_difference: int):
