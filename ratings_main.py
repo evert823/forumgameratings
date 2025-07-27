@@ -29,6 +29,7 @@ myRatingList.add_new_players()
 myRatingList.execute_rating_cycle(rating_impact_table_df=rating_impact_table_df)
 
 myupdatedratings_df = pd.DataFrame(myRatingList.myratings, columns=['Full name of player', 'Rating'])
+myupdatedratings_df = myupdatedratings_df.sort_values(by='Rating', ascending=False)
 myupdatedratings_df.to_csv('./outputdata/ratinglist_updated.csv', index=False)
 
 print("Updated ratings saved in outputfile")
